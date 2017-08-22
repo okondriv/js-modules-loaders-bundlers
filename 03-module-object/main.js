@@ -1,5 +1,5 @@
-(function(util){
+(function(app){
   var values = Array.from(Array(100000).keys());
-  var answer = util.sum(values)
+  var answer = app.sum(values)
   document.getElementById("answer").innerHTML = answer;
-})(myUtil);
+})(myApp);
