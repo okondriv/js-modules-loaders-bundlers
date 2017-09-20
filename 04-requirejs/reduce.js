@@ -1,4 +1,4 @@
-define(function(){
+define([], function(){
   var reduce = function(arr, iteratee) {
     var index = 0,
       length = arr.length,

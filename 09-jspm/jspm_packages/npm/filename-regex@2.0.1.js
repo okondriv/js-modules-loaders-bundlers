@@ -1,0 +1,1 @@
+module.exports = require("npm:filename-regex@2.0.1/index.js");

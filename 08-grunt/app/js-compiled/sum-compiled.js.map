@@ -1,0 +1,1 @@
+{"version":3,"sources":["../js/sum.js"],"names":["arr"],"mappings":";;;;;;AAAA;;AACA;;;;;;kBAEe,UAACA,GAAD;AAAA,SAAS,sBAAOA,GAAP,WAAT;AAAA,C","file":"sum-compiled.js","sourcesContent":["import { add } from './add';\nimport reduce from './reduce';\n\nexport default (arr) => reduce(arr, add);\n"]}

@@ -1,4 +1,4 @@
-(function(){
+(function(myApp){
 	myApp.reduce = function(arr, iteratee) {
 	  var index = 0,
 	    length = arr.length,
@@ -10,4 +10,4 @@
 	  }
 	  return memo;
 	}
-})();
+})(document.myApp || (document.myApp = {}));

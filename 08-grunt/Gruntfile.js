@@ -51,33 +51,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    // es6transpiler: {
-    //     dist: {
-    //         files: [{
-    //             "expand": true,
-    //             "cwd": "app/js",
-    //             "src": ["**/*.js"],
-    //             "dest": "app/js-compiled/",
-    //             "ext": "-compiled.js"
-    //         }]
-    //     }
-    // },
-    // rollup: {
-    //   options: {
-    //     format: "iife",
-    //     plugins: [
-    //       require("rollup-plugin-babel")({
-    //         presets: [["es2015", { "modules": false }]],
-    //         plugins: ["external-helpers"]
-    //       })
-    //     ]
-    //   },
-    //   dist: {
-    //     files: {
-    //       "dist/all-min.js": ["app/js/add.js"]
-    //     }
-    //   }
-    // },
     // babel: {
     //   options: {
     //       "sourceMap": true
@@ -92,6 +65,12 @@ module.exports = function(grunt) {
     //       }]
     //   }
     // },
+    browserify: {
+      main: {
+        src: 'app/js/*.js',
+        dest: 'dist/build.js'
+      }
+    },
     uglify: {
       options: {
         //should we minify (false) or just concat (true)
@@ -99,33 +78,24 @@ module.exports = function(grunt) {
       },
       all_src : {
           options : {
-            sourceMap : true,
+            sourceMap : false,
             sourceMapName : 'app/build/sourceMap.map'
           },
-          src : ['app/js/*.js'],
-          dest : 'dist/all.min.js'
+          src : ['dist/build.js'],
+          dest : 'dist/build.min.js'
       }
     },
     watch: {
+      options: {
+        livereload: true
+      },
       less: {
           files: ['app/css/*.less'],
-          tasks: ['less', 'autoprefixer'],
-          // options: {
-          //   livereload: {
-          //     host: 'localhost',
-          //     port: 9000
-          //   }
-          // }
+          tasks: ['less', 'autoprefixer']
       },
       jshint: {
         files: ["Gruntfile.js", "app/js/*.js"],
-        tasks: ['jshint'],
-        // options: {
-        //   livereload: {
-        //     host: 'localhost',
-        //     port: 9000
-        //   }
-        // }
+        tasks: ['jshint', 'browserify', 'uglify']
       }
     },
     autoprefixer: {
@@ -137,7 +107,6 @@ module.exports = function(grunt) {
       server: {
         options: {
           hostname: 'localhost',
-          // livereload: 35729,
           open: true,
           port: 9000
         }
@@ -152,14 +121,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-serve');
-  grunt.loadNpmTasks('grunt-es6-transpiler');
-  grunt.loadNpmTasks('grunt-babel');
+  // grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks("grunt-rollup");
+  // grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('test', ['jshint']);
 
   // the default task can be run just by typing "grunt" on the command line
-  grunt.registerTask('default', ['less', 'jshint', 'uglify', 'connect:server', 'watch']);
+  grunt.registerTask('default', ['less', 'browserify', 'uglify', 'connect:server', 'watch']);
 
 };

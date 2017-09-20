@@ -1,0 +1,1 @@
+module.exports = require("npm:websocket-extensions@0.1.2/lib/websocket_extensions");

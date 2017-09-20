@@ -1,0 +1,1 @@
+module.exports = require("npm:regex-cache@0.4.4/index.js");

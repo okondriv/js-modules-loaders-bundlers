@@ -1,5 +1,3 @@
-(function(app){
-  app.add = function(a, b) {
+module.exports = function add(a, b){
     return a + b;
-  };
-})(document.myApp || (document.myApp = {}));
+};

@@ -1,0 +1,46 @@
+{
+  "name": "jspm-server",
+  "version": "1.0.1",
+  "description": "prototype JSPM development server",
+  "keywords": [
+    "front-end",
+    "development",
+    "tool",
+    "server",
+    "http",
+    "cli"
+  ],
+  "author": "Glen Maddern",
+  "dependencies": {
+    "chokidar": "~1.0.1",
+    "colors": "latest",
+    "connect": "2.x.x",
+    "event-stream": "latest",
+    "faye-websocket": "0.9.x",
+    "http-proxy": "^1.11.1",
+    "open": "latest",
+    "send": "latest",
+    "watchr": "2.3.x"
+  },
+  "bin": {
+    "jspm-server": "./jspm-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geelen/jspm-server.git"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "build": "browserify injected.src.js -t babelify --outfile injected.js"
+  },
+  "preferGlobal": true,
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "~6.0.2",
+    "browserify": "~9.0.7",
+    "fkit": "^0.16.2",
+    "watchify": "~3.1.0"
+  }
+}

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>JS Modules - Inline Script</title>
+    <title>Inline Script</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
@@ -19,8 +19,8 @@
 
       function reduce(arr, iteratee) {
         var index = 0,
-          length = arr.length,
-          memo = arr[index];
+            length = arr.length,
+            memo = arr[index];
 
         for(index += 1; index < length; index += 1) {
           memo = iteratee(memo, arr[index]);

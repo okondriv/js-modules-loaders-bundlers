@@ -1,0 +1,1 @@
+module.exports = require("npm:depd@1.1.1/lib/browser/index.js");
